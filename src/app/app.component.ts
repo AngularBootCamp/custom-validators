@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { trivialValidator, fiveValidator, matchingPasswordValidator, matchingFieldValidator} from './validators';
+import { trivialValidator, fiveValidator, matchingPasswordValidator, matchingFieldValidator } from './validators';
 
 @Component({
   selector: 'app-root',
