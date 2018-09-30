@@ -19,8 +19,8 @@ export function fiveValidator(control: FormControl): ValidationErrors | undefine
 }
 
 export function matchingPasswordValidator(group: FormGroup): ValidationErrors | undefined {
-  let first = group.get('password');
-  let second = group.get('confirmPassword');
+  const first = group.get('password');
+  const second = group.get('confirmPassword');
   if (first && second && first.value !== second.value) {
     return {
       mismatched: true
@@ -30,9 +30,9 @@ export function matchingPasswordValidator(group: FormGroup): ValidationErrors | 
 
 export function matchingFieldValidator(firstKey: string, secondKey: string, errorName: string) {
   return function (group: FormGroup): ValidationErrors | undefined {
-    let first = group.controls[firstKey];
-    let second = group.controls[secondKey];
-    if (first.value !== second.value) {
+    const first = group.controls[firstKey];
+    const second = group.controls[secondKey];
+    if (first && second && first.value !== second.value) {
       return {
         [errorName]: true
       };
