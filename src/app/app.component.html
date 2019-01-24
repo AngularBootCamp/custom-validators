@@ -1,5 +1,8 @@
-<h4>Login Form</h4>
-<form [formGroup]="loginFormGroup" (ngSubmit)="onLogin()">
+<section class="card">
+  <div class="card-content">
+    <div class="card-title">Login Form</div>
+
+    <form [formGroup]="loginFormGroup" (ngSubmit)="onLogin()">
   <div class="four-across">
     <label>
       <span>Login</span>
@@ -24,7 +27,10 @@
   </div>
   <button [disabled]="!loginFormGroup.valid" class="btn"
           [class.disabled]="!loginFormGroup.valid" >Login</button>
-</form>
+    </form>
+
+  </div>
+</section>
 
 <section class="card">
   <div class="card-content">
