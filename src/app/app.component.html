@@ -3,32 +3,51 @@
     <div class="card-title">Login Form</div>
 
     <form [formGroup]="loginFormGroup" (ngSubmit)="onLogin()">
-  <div class="four-across">
-    <label>
-      <span>Login</span>
-      <input type="text" formControlName="login">
-      <span *ngIf="loginFormGroup.get('login')?.hasError('required')">Username is required</span>
-    </label>
-    <label>
-      <span>Password</span>
-      <input type="password" formControlName="password">
-      <span *ngIf="loginFormGroup.get('password')?.hasError('required')">Password is required</span>
-    </label>
-    <label>
-      <span>Password</span>
-      <input type="password" formControlName="confirmPassword">
-      <span *ngIf="loginFormGroup.hasError('mismatched')">Passwords must match</span>
-    </label>
-    <label>
-      <span>Please enter 5 here:</span>
-      <input type="text" formControlName="enterFive">
-      <span *ngIf="loginFormGroup.get('enterFive')?.hasError('verifyFive')">You must enter 5</span>
-    </label>
-  </div>
-  <button [disabled]="!loginFormGroup.valid" class="btn"
-          [class.disabled]="!loginFormGroup.valid" >Login</button>
+      <div class="four-across">
+        <label>
+          <span>Login</span>
+          <input type="text" formControlName="login" />
+          <span
+            *ngIf="loginFormGroup.get('login')?.hasError('required')"
+            >Username is required</span
+          >
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" formControlName="password" />
+          <span
+            *ngIf="
+              loginFormGroup.get('password')?.hasError('required')
+            "
+            >Password is required</span
+          >
+        </label>
+        <label>
+          <span>Password</span>
+          <input type="password" formControlName="confirmPassword" />
+          <span *ngIf="loginFormGroup.hasError('mismatched')"
+            >Passwords must match</span
+          >
+        </label>
+        <label>
+          <span>Please enter 5 here:</span>
+          <input type="text" formControlName="enterFive" />
+          <span
+            *ngIf="
+              loginFormGroup.get('enterFive')?.hasError('verifyFive')
+            "
+            >You must enter 5</span
+          >
+        </label>
+      </div>
+      <button
+        [disabled]="!loginFormGroup.valid"
+        class="btn"
+        [class.disabled]="!loginFormGroup.valid"
+      >
+        Login
+      </button>
     </form>
-
   </div>
 </section>
 
@@ -42,6 +61,8 @@
     Form Validity:
     <div>{{ loginFormGroup.valid }}</div>
 
-    <button class="btn" (click)="logTheForm()">Log Form Object</button>
+    <button class="btn" (click)="logTheForm()">
+      Log Form Object
+    </button>
   </div>
 </section>

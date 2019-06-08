@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { fiveValidator, matchingPasswordValidator } from './validators';
+import {
+  fiveValidator,
+  matchingPasswordValidator
+} from './validators';
 // import { trivialValidator, matchingFieldValidator } from './validators';
 
 @Component({
@@ -15,14 +18,18 @@ export class AppComponent {
     this.loginFormGroup = fb.group(
       {
         login: ['user', Validators.required],
-        password: ['defaultPass', [Validators.minLength(3), Validators.required]],
+        password: [
+          'defaultPass',
+          [Validators.minLength(3), Validators.required]
+        ],
         enterFive: ['5', fiveValidator],
         confirmPassword: ['pass', Validators.minLength(3)]
       },
       {
         validator: matchingPasswordValidator
         // validator: matchingFieldValidator('password', 'confirmPassword', 'mismatched')
-      });
+      }
+    );
   }
 
   onLogin(): void {

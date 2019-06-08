@@ -1,6 +1,12 @@
-import { FormControl, FormGroup, ValidationErrors } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ValidationErrors
+} from '@angular/forms';
 
-export function trivialValidator(control: FormControl): ValidationErrors | undefined {
+export function trivialValidator(
+  control: FormControl
+): ValidationErrors | undefined {
   if (control.value === '12345') {
     return undefined;
   } else {
@@ -10,7 +16,9 @@ export function trivialValidator(control: FormControl): ValidationErrors | undef
   }
 }
 
-export function fiveValidator(control: FormControl): ValidationErrors | undefined {
+export function fiveValidator(
+  control: FormControl
+): ValidationErrors | undefined {
   if (control.value !== '5') {
     return {
       verifyFive: true
@@ -18,7 +26,9 @@ export function fiveValidator(control: FormControl): ValidationErrors | undefine
   }
 }
 
-export function matchingPasswordValidator(group: FormGroup): ValidationErrors | undefined {
+export function matchingPasswordValidator(
+  group: FormGroup
+): ValidationErrors | undefined {
   const first = group.get('password');
   const second = group.get('confirmPassword');
   if (first && second && first.value !== second.value) {
@@ -28,8 +38,12 @@ export function matchingPasswordValidator(group: FormGroup): ValidationErrors | 
   }
 }
 
-export function matchingFieldValidator(firstKey: string, secondKey: string, errorName: string) {
-  return function (group: FormGroup): ValidationErrors | undefined {
+export function matchingFieldValidator(
+  firstKey: string,
+  secondKey: string,
+  errorName: string
+) {
+  return (group: FormGroup): ValidationErrors | undefined => {
     const first = group.controls[firstKey];
     const second = group.controls[secondKey];
     if (first && second && first.value !== second.value) {
