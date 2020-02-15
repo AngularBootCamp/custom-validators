@@ -6,9 +6,9 @@ import {
 
 export function trivialValidator(
   control: FormControl
-): ValidationErrors | undefined {
+): ValidationErrors | null {
   if (control.value === '12345') {
-    return undefined;
+    return null;
   } else {
     return {
       trivial: true
@@ -18,17 +18,18 @@ export function trivialValidator(
 
 export function fiveValidator(
   control: FormControl
-): ValidationErrors | undefined {
+): ValidationErrors | null {
   if (control.value !== '5') {
     return {
       verifyFive: true
     };
   }
+  return null;
 }
 
 export function matchingPasswordValidator(
   group: FormGroup
-): ValidationErrors | undefined {
+): ValidationErrors | null {
   const first = group.get('password');
   const second = group.get('confirmPassword');
   if (first && second && first.value !== second.value) {
@@ -36,6 +37,7 @@ export function matchingPasswordValidator(
       mismatched: true
     };
   }
+  return null;
 }
 
 export function matchingFieldValidator(
@@ -43,7 +45,7 @@ export function matchingFieldValidator(
   secondKey: string,
   errorName: string
 ) {
-  return (group: FormGroup): ValidationErrors | undefined => {
+  return (group: FormGroup): ValidationErrors | null => {
     const first = group.controls[firstKey];
     const second = group.controls[secondKey];
     if (first && second && first.value !== second.value) {
@@ -51,5 +53,6 @@ export function matchingFieldValidator(
         [errorName]: true
       };
     }
+    return null;
   };
 }
