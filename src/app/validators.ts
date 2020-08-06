@@ -32,7 +32,7 @@ export function matchingPasswordValidator(
 ): ValidationErrors | null {
   const first = group.get('password');
   const second = group.get('confirmPassword');
-  if (first && second && first.value !== second.value) {
+  if (first?.value !== second?.value) {
     return {
       mismatched: true
     };
@@ -48,7 +48,7 @@ export function matchingFieldValidator(
   return (group: FormGroup): ValidationErrors | null => {
     const first = group.controls[firstKey];
     const second = group.controls[secondKey];
-    if (first && second && first.value !== second.value) {
+    if (first?.value !== second?.value) {
       return {
         [errorName]: true
       };
