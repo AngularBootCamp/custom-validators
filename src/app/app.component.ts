@@ -26,8 +26,8 @@ export class AppComponent {
         confirmPassword: ['pass', Validators.minLength(3)]
       },
       {
-        validator: matchingPasswordValidator
-        // validator: matchingFieldValidator('password', 'confirmPassword', 'mismatched')
+        validators: matchingPasswordValidator
+        // validators: matchingFieldValidator('password', 'confirmPassword', 'mismatched')
       }
     );
   }

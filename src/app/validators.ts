@@ -1,4 +1,5 @@
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   ValidationErrors
@@ -28,7 +29,7 @@ export function fiveValidator(
 }
 
 export function matchingPasswordValidator(
-  group: FormGroup
+  group: AbstractControl
 ): ValidationErrors | null {
   const first = group.get('password');
   const second = group.get('confirmPassword');
