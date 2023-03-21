@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  Validators
+} from '@angular/forms';
 
 import {
   fiveValidator,
@@ -12,9 +17,14 @@ import {
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  loginFormGroup: FormGroup;
+  loginFormGroup: FormGroup<{
+    login: FormControl<string>;
+    password: FormControl<string>;
+    enterFive: FormControl<string>;
+    confirmPassword: FormControl<string>;
+  }>;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: NonNullableFormBuilder) {
     this.loginFormGroup = fb.group(
       {
         login: ['user', Validators.required],

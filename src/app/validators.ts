@@ -1,12 +1,11 @@
 import {
   AbstractControl,
-  FormControl,
   FormGroup,
   ValidationErrors
 } from '@angular/forms';
 
 export function trivialValidator(
-  control: FormControl
+  control: AbstractControl
 ): ValidationErrors | null {
   if (control.value === '12345') {
     return null;
@@ -18,7 +17,7 @@ export function trivialValidator(
 }
 
 export function fiveValidator(
-  control: FormControl
+  control: AbstractControl
 ): ValidationErrors | null {
   if (control.value !== '5') {
     return {
@@ -31,14 +30,20 @@ export function fiveValidator(
 export function matchingPasswordValidator(
   group: AbstractControl
 ): ValidationErrors | null {
-  const first = group.get('password');
-  const second = group.get('confirmPassword');
-  if (first?.value !== second?.value) {
-    return {
-      mismatched: true
-    };
+  if (group instanceof FormGroup) {
+    const first = group.get('password');
+    const second = group.get('confirmPassword');
+    if (first?.value !== second?.value) {
+      return {
+        mismatched: true
+      };
+    }
+    return null;
+  } else {
+    throw Error(
+      'Only use `matchingPasswordValidator` with FormGroups'
+    );
   }
-  return null;
 }
 
 export function matchingFieldValidator(
@@ -46,14 +51,20 @@ export function matchingFieldValidator(
   secondKey: string,
   errorName: string
 ) {
-  return (group: FormGroup): ValidationErrors | null => {
-    const first = group.controls[firstKey];
-    const second = group.controls[secondKey];
-    if (first?.value !== second?.value) {
-      return {
-        [errorName]: true
-      };
+  return (group: AbstractControl): ValidationErrors | null => {
+    if (group instanceof FormGroup) {
+      const first = group.controls[firstKey];
+      const second = group.controls[secondKey];
+      if (first?.value !== second?.value) {
+        return {
+          [errorName]: true
+        };
+      }
+      return null;
+    } else {
+      throw Error(
+        'Only use `matchingFieldValidator` with FormGroups'
+      );
     }
-    return null;
   };
 }
