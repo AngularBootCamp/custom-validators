@@ -1,9 +1,11 @@
+import { NgIf, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   NonNullableFormBuilder,
-  Validators
+  Validators,
+  ReactiveFormsModule
 } from '@angular/forms';
 
 import {
@@ -14,7 +16,9 @@ import {
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf, JsonPipe]
 })
 export class AppComponent {
   loginFormGroup: FormGroup<{
