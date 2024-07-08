@@ -1,4 +1,4 @@
-import { NgIf, JsonPipe } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -18,7 +18,7 @@ import {
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, JsonPipe]
+  imports: [ReactiveFormsModule, JsonPipe]
 })
 export class AppComponent {
   loginFormGroup: FormGroup<{
